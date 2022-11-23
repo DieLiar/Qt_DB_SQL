@@ -33,10 +33,9 @@ HUD::HUD(QWidget *parent) : QMainWindow(parent), ui(new Ui::HUD)
                ");";
        bool b = a_query.exec(str);
        if (!b) {
-           QMessageBox :: critical (this, "info", "Вроде не удается создать таблицу, провертье карманы!");
+           QMessageBox :: critical (this, "info", "не удается создать таблицу");
        }
 
-       // DML
           QString str_insert = "INSERT INTO my_table(number, address, age) "
                   "VALUES (%1, '%2', %3);";
           str = str_insert.arg("14")
@@ -45,11 +44,11 @@ HUD::HUD(QWidget *parent) : QMainWindow(parent), ui(new Ui::HUD)
           b = a_query.exec(str);
 
        if (!b) {
-           QMessageBox :: critical (this, "info", "Кажется данные не вставляются, проверьте дверь, может она закрыта?");
+           QMessageBox :: critical (this, "info", "данные не вставляются");
        }
 
        if (!a_query.exec("SELECT * FROM my_table")) {
-           QMessageBox :: critical (this, "info", "Даже селект не получается, я пас.");
+           QMessageBox :: critical (this, "info", "селект не получается");
 
        }
        QSqlRecord rec = a_query.record();
@@ -64,8 +63,6 @@ HUD::HUD(QWidget *parent) : QMainWindow(parent), ui(new Ui::HUD)
            qDebug() << "number is " << number
                      << ". age is " << age;
        }
-
-
 
 // ---------- Tree Widget ----------
     ui->treeWidget->clear();
@@ -86,7 +83,7 @@ HUD::~HUD()
 //=============== FILL TREE ===============
 void HUD::FILL()
 {
-    //---------- Default parent & child ----------
+//---------- Default parent & child ----------
         QTreeWidgetItem *db_root = new QTreeWidgetItem();
         db_root->setText(0, "01");
         db_root->setText(1, "root");
