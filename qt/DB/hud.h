@@ -33,26 +33,41 @@ private slots:
 
     void on_remove_clicked();
 
-    void on_TEST_clicked();
-
     void on_EditID_clicked();
 
     void on_info_clicked();
 
+    void on_actionFill_from_DataBase_triggered();
+
+    void on_actionClear_Tree_triggered();
+
+    void on_actionClear_DataBase_triggered();
+
+    void on_actionDrop_Table_triggered();
+
+    void on_Delete_clicked();
+
+    void on_Refresh_clicked();
+
 private:
     Ui::HUD *ui;
+
+    QSqlQuery * Table_I;
 
     int count;
     QTreeWidgetItem *currentItem; //текущий элемент, запоминается при клике в QTreeWidget
     int currentColumn; //номер столбца
 
-    void check(QString id, QString name); //Проверка 2х полей editline
     void check(QString name); //Проверка поля editline
-    void AddItem(QString id, QString name); //Добавление элемента в QTreeWidget
-    void InsertItem (QTreeWidgetItem *parent, QString id, QString name); //Вставка элемента в QTreeWidget
+    void AddItem(int id, QString name); //Добавление элемента в QTreeWidget
+    void InsertItem (QTreeWidgetItem *parent, int id, QString name); //Вставка элемента в QTreeWidget
     void EditItem(QTreeWidgetItem *currentItem, QString editText); //Изменение элемента в QTreeWidget
     void DeleteItem (QTreeWidgetItem *currentItem); //удаление элемента из QTreeWidget
+    void DBDeleteItem (QTreeWidgetItem *currentItem);
+    int treeCount(QTreeWidget *, QTreeWidgetItem *);
+    void ClearTree(QTreeWidget *);
 
     void FILL(); // Дефолтное заполнение для демонстрации
+    void print(QString str);
 };
 #endif // HUD_H
