@@ -69,7 +69,7 @@ private:
     void DBDeleteItem (QTreeWidgetItem *currentItem);
     int treeCount(QTreeWidget *, QTreeWidgetItem *);
     void ClearTree(QTreeWidget *);
-
+    void ReFresh();
     void connect(QString str);
     void FILL();
     void print(QString str);

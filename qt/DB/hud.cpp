@@ -48,7 +48,11 @@ void HUD::ClearTree(QTreeWidget * tree)
 {
     tree->clear();
 }
-
+void HUD::ReFresh()
+{
+    ClearTree(ui->treeWidget);
+    FILL();
+}
 //=============== COUNT  ===============
 int HUD::treeCount(QTreeWidget *tree, QTreeWidgetItem *parent = 0)
 {
@@ -125,7 +129,7 @@ void HUD::check(QString name)
 {
     check();
     if(name =="")
-        throw("Line for edit is EMPTY");
+        throw("EditLine is EMPTY");
     if(name == "0")
         throw("0 on Edit Line");
 
@@ -236,7 +240,11 @@ void HUD::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 //=============== FILL DEFAULT TREE ===============
 void HUD::on_actionFill_from_DataBase_triggered()
 {
-    FILL();
+    try {
+        check();
+        FILL();
+    }
+    catch(const char * msg) {QMessageBox :: critical (this, "info", msg);}
 }
 //=============== Info Button ===============
 void HUD::on_info_clicked()
@@ -252,23 +260,29 @@ void HUD::on_actionClear_Tree_triggered()
 }
 void HUD::on_actionClear_DataBase_triggered()
 {
-    QString str = "DELETE FROM Item";
-
-    print(str);
-    Table_I->exec(str);
+    try{
+        check();
+        QString str = "DELETE FROM Item";
+        print(str);
+        Table_I->exec(str);
+    }
+    catch(const char * msg) {QMessageBox :: critical (this, "info", msg);}
 }
 void HUD::on_actionDrop_Table_triggered()
 {
-    QString str = "DROP TABLE IF EXISTS Item";
-    print(str);
-    Table_I->exec(str);
+    try{
+        check();
+        QString str = "DROP TABLE IF EXISTS Item";
+        print(str);
+        Table_I->exec(str);
+    }
+    catch(const char * msg) {QMessageBox :: critical (this, "info", msg);}
 }
 void HUD::on_Refresh_clicked()
 {
     try{
         check();
-        ClearTree(ui->treeWidget);
-        FILL();
+        ReFresh();
     }
     catch(const char * msg) {QMessageBox :: critical (this, "info", msg);}
 }
