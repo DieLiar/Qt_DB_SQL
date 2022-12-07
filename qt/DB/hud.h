@@ -29,8 +29,6 @@ private slots:
 
     void on_input_clicked();
 
-    void on_EditID_clicked();
-
     void on_info_clicked();
 
     void on_actionFill_from_DataBase_triggered();

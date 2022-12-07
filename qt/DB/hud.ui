@@ -108,20 +108,6 @@
         <item row="4" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="2" column="1">
-           <widget class="QPushButton" name="EditID">
-            <property name="text">
-             <string>Edit</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Edit ID or Name</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -134,17 +120,20 @@
             </property>
            </spacer>
           </item>
-          <item row="5" column="1">
-           <widget class="QPushButton" name="info">
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Informations</string>
+             <string>Edit ID or Name</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="EditLineID"/>
           </item>
-          <item row="4" column="1">
+          <item row="3" column="0">
+           <layout class="QGridLayout" name="gridLayout_2"/>
+          </item>
+          <item row="3" column="1">
            <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -157,8 +146,12 @@
             </property>
            </spacer>
           </item>
-          <item row="4" column="0">
-           <layout class="QGridLayout" name="gridLayout_2"/>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="info">
+            <property name="text">
+             <string>Informations</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

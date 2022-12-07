@@ -123,6 +123,7 @@ void HUD::DBDeleteItem (QTreeWidgetItem *currentItem)
 //=============== check for valid line ===============
 void HUD::check(QString name)
 {
+    check();
     if(name =="")
         throw("Line for edit is EMPTY");
     if(name == "0")
@@ -174,7 +175,7 @@ void HUD::EditItem(QTreeWidgetItem *currentItem, QString editText)
         check(editText);
         QString str;
 
-        str = "UPDATE Item SET Name = '" + editText + "' WHERE Name = '" + currentItem->text(1) + "';";
+        str = "UPDATE Item SET Name = '" + editText + "' WHERE id = '" + currentItem->text(0) + "';";
 
         HUD::ui->textEdit->insertPlainText(" | " + str + " | " + "\n");
 
@@ -223,11 +224,6 @@ void HUD::on_Delete_clicked()
     }
 }
 //=============== EDIT in UI ===============
-void HUD::on_EditID_clicked()
-{
-
-}
-
 void HUD::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     currentItem = item;
@@ -269,8 +265,12 @@ void HUD::on_actionDrop_Table_triggered()
 }
 void HUD::on_Refresh_clicked()
 {
-    ClearTree(ui->treeWidget);
-    FILL();
+    try{
+        check();
+        ClearTree(ui->treeWidget);
+        FILL();
+    }
+    catch(const char * msg) {QMessageBox :: critical (this, "info", msg);}
 }
 void HUD::on_actionCreate_2_triggered()
 {
