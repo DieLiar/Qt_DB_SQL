@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/DataBase_file">
+        <file>default.txt</file>
+    </qresource>
+</RCC>
